@@ -1,12 +1,19 @@
 console.log('js');
-var myApp = angular.module('myApp', []); // 'ng-route necessary?'
+
+var myApp = angular.module('myApp', []);
 
 myApp.controller('registerController',['$scope', function($scope){
 console.log('in registerController');
 
 }]); //end registerController
 
-myApp.controller('searchController', ['$scope', '$http', function($scope, $http){
+myApp.filter('youtubeEmbedUrl', function ($sce) {
+    return function(videoId) {
+      return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + videoId);
+    };
+  });
+
+myApp.controller('searchController',['$scope', '$http', function($scope, $http){
 console.log('in searchController');
 
 $scope.songSearch = function(){
@@ -14,7 +21,6 @@ $scope.songSearch = function(){
   var songSearch = $scope.search;
   var self = this;
   var apiKey = 'AIzaSyBTvvYsO87BPcSWBvLGn-jH20pMytm9kRU';
-  var arrayOfVideos = {};
   self.video = {};
   self.videoid = '';
 
@@ -40,20 +46,21 @@ $scope.songSearch = function(){
       url: query,
     }).then( function( response ){
       console.log( 'response:', response );
-      $scope.searchResults = /*'watch?v=' + */response.data.items.filter(function(item){
+      $scope.searchResults = response.data.items.filter(function(item){
         if (item.id.kind === "youtube#video"){
           return true;
         }
         else {
           return false;
         }
-      })/*.map(function(item){
-        item.id.videoId = 'www.youtube.com/watch?v=' + item.id.videoId;
-        return item
-      })*/;
+      // }).map(function(item){
+      //   item.id.videoId = 'www.youtube.com/watch?v=' + item.id.videoId;
+      //   return item;
+      // });
       console.log($scope.searchResults);
 
     });
+  });
 }; // end search function
 };
 }]); // end searchController
