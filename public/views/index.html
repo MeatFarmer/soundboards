@@ -19,9 +19,10 @@
       <p>What's your favorite song?</p>
       <input ng-model="search" type="search" name="songSearch">
       <button type="button" ng-click="songSearch();" name="search">search</button>
-    <div ng-repeat='vid in searchResults track by $index'>
+    <div ng-repeat='vid in searchResults'>
       <p>{{ vid.id.videoId }}</p>
-    <iframe style="display:block" width="440" height="260" ng-href="www.youtube.com/watch?v={{ vid.id.videoId  }}" frameborder="0" allowfullscreen></iframe>
+      <iframe width="560" height="315" ng-src="{{vid | youtubeEmbedUrl}}" frameborder="0" allowfullscreen></iframe>
+    <!-- <iframe width="440" height="260" ng-href="www.youtube.com/watch?v={{ vid | youtubeEmbedUrl  }}"></iframe> -->
     </div>
     </div>
   </body>

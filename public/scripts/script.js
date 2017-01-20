@@ -1,30 +1,30 @@
 console.log('js');
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', []); // 'ng-route necessary?'
 
 myApp.controller('registerController',['$scope', function($scope){
 console.log('in registerController');
 
 }]); //end registerController
 
-myApp.controller('searchController',['$scope', '$http', function($scope, $http){
+myApp.controller('searchController', ['$scope', '$http', function($scope, $http){
 console.log('in searchController');
 
 $scope.songSearch = function(){
 
-// var youtubeAPI = angular.module('youtubeAPI', ['ngRoute']);
-//   youtubeAPI.filter('youtubeEmbedUrl', function () {
-//     return function(videoId) {
-//       return trustAsResourceUrl('https://www.youtube.com/embed/' + videoId);
-//     };
-//   });
-
   var songSearch = $scope.search;
   var self = this;
-  // var key = apiConfig.key;
   var apiKey = 'AIzaSyBTvvYsO87BPcSWBvLGn-jH20pMytm9kRU';
   var arrayOfVideos = {};
   self.video = {};
   self.videoid = '';
+
+  self.songSearch = function(){
+
+  myApp.filter('youtubeEmbedUrl', function ($sce) {
+      return function(videoId) {
+        return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + videoId);
+      };
+    });
 
   console.log(songSearch);
   var query = 'https://www.googleapis.com/youtube/v3/search';
@@ -52,6 +52,8 @@ $scope.songSearch = function(){
         return item
       })*/;
       console.log($scope.searchResults);
+
     });
 }; // end search function
+};
 }]); // end searchController
