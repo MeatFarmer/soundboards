@@ -3,23 +3,25 @@
   <head>
     <title>SOUNDBOARD</title>
     <script src="../vendors/angular.min.js" charset="utf-8"></script>
+    <script src="../vendors/angular-route.min.js" charset="utf-8"></script>
     <script src="../scripts/script.js" charset="utf-8"></script>
   </head>
   <body ng-app="myApp">
     <h1>soundboard</h1>
     <div ng-controller="registerController">
       <h3>register to save searches</h3>
-      <button type="button" name="register">register</button> <!-- NOTE: register function -->
-      <button type="button" name="login">login</button> <!-- NOTE: login function -->
+      <button type="button" name="register">register</button>
+      <button type="button" name="login">login</button>
     </div>
     <div ng-controller="searchController">
       <p>Do you want to learn how to play guitar but you're afraid to start?</p>
       <strong>Let's learn together!</strong>
       <p>What's your favorite song?</p>
-      <input ng-model="search" type="search" name="songSearch"> <!-- NOTE: $scope the search results and use to search youtube -->
-      <button type="button" ng-click="songSearch();" name="search">search</button> <!-- NOTE: search function -->
-    <div ng-repeat='vid in searchResults'>
-    <iframe style="display:block" width="440" height="260" ng-src="{{ vid }}" frameborder="0" allowfullscreen></iframe>
+      <input ng-model="search" type="search" name="songSearch">
+      <button type="button" ng-click="songSearch();" name="search">search</button>
+    <div ng-repeat='vid in searchResults track by $index'>
+      <p>{{ vid.id.videoId }}</p>
+    <iframe style="display:block" width="440" height="260" ng-href="www.youtube.com/watch?v={{ vid.id.videoId  }}" frameborder="0" allowfullscreen></iframe>
     </div>
     </div>
   </body>

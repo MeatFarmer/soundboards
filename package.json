@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/MeatFarmer/SoundBoard#readme",
   "dependencies": {
+    "angular-route": "^1.6.1",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",

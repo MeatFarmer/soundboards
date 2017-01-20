@@ -1,5 +1,5 @@
 console.log('js');
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['ngRoute']);
 
 myApp.controller('registerController',['$scope', function($scope){
 console.log('in registerController');
@@ -12,9 +12,9 @@ console.log('in searchController');
 $scope.songSearch = function(){
 
 // var youtubeAPI = angular.module('youtubeAPI', ['ngRoute']);
-//   youtubeAPI.filter('youtubeEmbedUrl', function ($sce) {
+//   youtubeAPI.filter('youtubeEmbedUrl', function () {
 //     return function(videoId) {
-//       return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + videoId);
+//       return trustAsResourceUrl('https://www.youtube.com/embed/' + videoId);
 //     };
 //   });
 
@@ -29,7 +29,7 @@ $scope.songSearch = function(){
   console.log(songSearch);
   var query = 'https://www.googleapis.com/youtube/v3/search';
             query += '?part=snippet';
-            query += '&q=' + songSearch;
+            query += '&q=' + songSearch + 'guitar lesson';
             query += '&maxResults=6';
             query += '&key=' + apiKey;
 
@@ -40,9 +40,18 @@ $scope.songSearch = function(){
       url: query,
     }).then( function( response ){
       console.log( 'response:', response );
-      $scope.searchResults = response;
-      console.log(response);
+      $scope.searchResults = /*'watch?v=' + */response.data.items.filter(function(item){
+        if (item.id.kind === "youtube#video"){
+          return true;
+        }
+        else {
+          return false;
+        }
+      })/*.map(function(item){
+        item.id.videoId = 'www.youtube.com/watch?v=' + item.id.videoId;
+        return item
+      })*/;
+      console.log($scope.searchResults);
     });
 }; // end search function
-
 }]); // end searchController
