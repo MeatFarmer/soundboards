@@ -1,5 +1,5 @@
 console.log('js');
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', []);
 
 myApp.controller('registerController',['$scope', function($scope){
 console.log('in registerController');
