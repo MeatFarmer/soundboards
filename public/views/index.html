@@ -8,19 +8,17 @@
   </head>
   <body ng-app="myApp">
     <h1>soundboard</h1>
-    <div ng-controller="registerController">
+    <div ng-controller="indexController">
       <h3>register to save searches</h3>
-      <button type="button" name="register">register</button>
-      <button type="button" name="login">login</button>
+      <button href="/register" type="button" name="register">register</button>
+      <button href="/login" type="button" name="login">login</button>
     </div>
-    <div ng-controller="searchController">
       <p>Do you want to learn how to play guitar but you're afraid to start?</p>
       <strong>Let's learn together!</strong>
       <p>What's your favorite song?</p>
-      <input ng-model="search" type="search" name="songSearch">
-      <button type="button" ng-click="songSearch();" name="search">search</button> <!-- NOTE: vid.id.videoId -->
+      <input ng-model="search" type="search" name="songSearch" placeholder="song title">
+      <button type="button" ng-click="songSearch();" name="search">search</button>
     <div ng-repeat="vid in searchResults track by $index">
-      <!-- <p>{{ vid.id.videoId }}</p> -->
     <iframe style="display:block" width="440" height="260" ng-src="{{ vid.id.videoId | youtubeEmbedUrl }}" frameborder="0" allowfullscreen></iframe>
     </div>
     </div>

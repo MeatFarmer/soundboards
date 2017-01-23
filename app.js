@@ -2,13 +2,6 @@ var express = require('express');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-// var passport = require('./strategies/userStrategy');
-
-//require routers
-// var indexRouter = require('./routes/index');
-// var registerRouter = require('./routes/register');
-// var homeRouter = require('./routes/home');
-// var testRouter = require('./routes/test');
 
 var app = express();
 

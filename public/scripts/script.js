@@ -2,19 +2,14 @@ console.log('js');
 
 var myApp = angular.module('myApp', []);
 
-myApp.controller('registerController',['$scope', function($scope){
-console.log('in registerController');
-
-}]); //end registerController
-
 myApp.filter('youtubeEmbedUrl', function ($sce) {
     return function(videoId) {
       return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + videoId);
     };
   });
 
-myApp.controller('searchController',['$scope', '$http', function($scope, $http){
-console.log('in searchController');
+myApp.controller('indexController',['$scope', '$http', function($scope, $http){
+console.log('in indexController');
 
 $scope.songSearch = function(){
 
