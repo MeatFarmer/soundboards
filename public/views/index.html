@@ -12,7 +12,6 @@
       <h3>register to save searches</h3>
       <button href="/register" type="button" name="register">register</button>
       <button href="/login" type="button" name="login">login</button>
-    </div>
       <p>Do you want to learn how to play guitar but you're afraid to start?</p>
       <strong>Let's learn together!</strong>
       <p>What's your favorite song?</p>
@@ -20,6 +19,7 @@
       <button type="button" ng-click="songSearch();" name="search">search</button>
     <div ng-repeat="vid in searchResults track by $index">
     <iframe style="display:block" width="440" height="260" ng-src="{{ vid.id.videoId | youtubeEmbedUrl }}" frameborder="0" allowfullscreen></iframe>
+    <button type="button" name="button" ng-click='saveSrc($index);'>save</button>
     </div>
     </div>
   </body>

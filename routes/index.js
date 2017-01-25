@@ -23,7 +23,7 @@ router.post('/', function (req,res){
    if (err) {
      res.sendStatus(404);
    } else {
-     res.send(newUpload);
+     res.send(newVideo);
    }
  });
 

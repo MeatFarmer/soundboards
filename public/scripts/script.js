@@ -11,8 +11,9 @@ myApp.filter('youtubeEmbedUrl', function ($sce) {
 myApp.controller('indexController',['$scope', '$http', function($scope, $http){
 console.log('in indexController');
 
-$scope.songSearch = function(){
 
+
+$scope.songSearch = function(){
   var songSearch = $scope.search;
   var self = this;
   var apiKey = 'AIzaSyBTvvYsO87BPcSWBvLGn-jH20pMytm9kRU';
@@ -21,13 +22,7 @@ $scope.songSearch = function(){
 
   self.songSearch = function(){
 
-  myApp.filter('youtubeEmbedUrl', function ($sce) {
-      return function(videoId) {
-        return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + videoId);
-      };
-    });
-
-  console.log(songSearch);
+  console.log('in song search', songSearch);
   var query = 'https://www.googleapis.com/youtube/v3/search';
             query += '?part=snippet';
             query += '&q=' + songSearch + 'guitar lesson';
@@ -40,7 +35,9 @@ $scope.songSearch = function(){
       method: 'GET',
       url: query,
     }).then( function( response ){
-      console.log( 'response:', response );
+      console.log('yes', response);
+      console.log( 'response:', response.data.items );
+      $scope.searchResults = response.data.items;
       $scope.searchResults = response.data.items.filter(function(item){
         if (item.id.kind === "youtube#video"){
           return true;
@@ -58,4 +55,19 @@ $scope.songSearch = function(){
   });
 }; // end search function
 };
+$scope.saveSrc = function(indexIn) {
+  var vidId = { id: $scope.searchResults[ indexIn ].id.videoId };
+  console.log('This is the VideoID', vidId);
+
+$http({
+  method: "POST",
+  url: '/',
+  data: vidId
+}).then(function (response){
+  console.log('Post response', response);
+});
+};
+
+
+
 }]); // end searchController
