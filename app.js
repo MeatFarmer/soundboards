@@ -3,7 +3,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
-
+var videoRouter = require('./routes/video');
 
 var app = express();
 
@@ -21,6 +21,7 @@ var server = app.listen(serverPort, function() {
 
 app.use('/', indexRouter);
 app.use('/work', indexRouter);
+app.use('/routers', videoRouter);
 
 // connect to the mongodb
 var mongoURI = "mongodb://localhost:27017/soundboard";

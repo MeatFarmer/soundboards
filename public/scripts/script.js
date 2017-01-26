@@ -1,6 +1,18 @@
 console.log('js');
 
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['ngRoute']);
+
+
+myApp.config(['$routeProvider', function($routeProvider){
+  $routeProvider
+  .when('/profile', {
+    templateUrl: 'views/profile.html',
+    controller: 'profileController'
+  })
+  .otherwise({
+    redirectTo: '/index'
+  });
+}]); //end routeProvider
 
 myApp.filter('youtubeEmbedUrl', function ($sce) {
     return function(videoId) {
@@ -28,8 +40,6 @@ $scope.songSearch = function(){
             query += '&q=' + songSearch + 'guitar lesson';
             query += '&maxResults=6';
             query += '&key=' + apiKey;
-
-  // var request = encodeURI(query) + '&callback=JSON_CALLBACK';
 
   $http({
       method: 'GET',
@@ -67,7 +77,31 @@ $http({
   console.log('Post response', response);
 });
 };
-
-
-
 }]); // end searchController
+
+myApp.controller('profileController',['$scope', '$http', function($scope, $http){
+console.log('in indexController');
+
+$scope.display = function(){
+  console.log('GET');
+    $http({
+      method:'GET',
+      url: '/routers/getVid'
+    }).then(function(response){
+      console.log('GET Response', response.data);
+      $scope.favorites = response.data;
+    });
+}; //end GET
+
+$scope.deleteSrc = function(indexIn) {
+
+$http({
+  method: "DELETE",
+  url: '/routers/' + $scope.favorites[ indexIn ]._id,
+}).then(function (response){
+  console.log('Post response', response);
+  $scope.display();
+});
+};
+
+}]); //end profileController

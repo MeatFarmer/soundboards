@@ -2,9 +2,20 @@
 <html>
   <head>
     <title>PROFILE PAGE</title>
+    <script src="../vendors/angular.min.js" charset="utf-8"></script>
+    <script src="../vendors/angular-route.min.js" charset="utf-8"></script>
+    <script src="../scripts/script.js" charset="utf-8"></script>
   </head>
-  <body>
+  <body ng-app="myApp">
     <h1>Thanks for logging in!  Here are the videos you've saved to review</h1>
-    <button type="button" name="save"></button>
+    <div ng-controller="profileController">
+      <a href="/">home</a>
+      <div ng-init="display()">
+      <div ng-repeat='vid in favorites'>
+        <iframe style="display:block" width="440" height="260" ng-src="{{ vid.vidId | youtubeEmbedUrl }}" frameborder="0" allowfullscreen></iframe>
+        <button type="button" name="button" ng-click='deleteSrc($index);'>delete</button>
+        </div>
+    </div>
+  </div>
   </body>
 </html>
