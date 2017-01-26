@@ -2,9 +2,11 @@
 <html>
   <head>
     <title>SOUNDBOARD</title>
+    <link rel="stylesheet" href="styles/style.css"/>
     <script src="../vendors/angular.min.js" charset="utf-8"></script>
     <script src="../vendors/angular-route.min.js" charset="utf-8"></script>
     <script src="../scripts/script.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
   </head>
   <body ng-app="myApp">
     <h1>soundboard</h1>
@@ -17,7 +19,7 @@
       <button type="button" ng-click="songSearch();" name="search">search</button>
     <div ng-repeat="vid in searchResults track by $index">
     <iframe style="display:block" width="440" height="260" ng-src="{{ vid.id.videoId | youtubeEmbedUrl }}" frameborder="0" allowfullscreen></iframe>
-    <button type="button" name="button" ng-click='saveSrc($index);'>save</button>
+    <button type="button" name="button" ng-click="saveSrc($index);">save</button>
     </div>
     </div>
   </body>
