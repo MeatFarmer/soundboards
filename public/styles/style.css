@@ -1,0 +1,56 @@
+body {
+  background-color: black !important;
+}
+h1 {
+	font-family: "Hammersmith One";
+  color: white !important;
+  font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px
+  z-index: 2;
+}
+p {
+	font-family: "Hammersmith One";
+	font-size: 17px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+  color: white !important;
+  padding: 10px 0px 10px 0px
+}
+img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+
+iframe {
+      width: 400px;
+      border: 25px solid grey;
+      padding: 25px;
+      margin: 25px;
+}
+a {
+  background-color: white !important;
+    color: black !important;
+    padding: 10px 15px;
+    margin: 25px;
+    font-size: 20px !important;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+}
+
+strong {
+  color: white !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+input {
+  font-size: 20px !important;
+}

@@ -7,19 +7,21 @@
     <script src="../vendors/angular-route.min.js" charset="utf-8"></script>
     <script src="../scripts/script.js" charset="utf-8"></script>
     <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Hammersmith+One" />
   </head>
   <body ng-app="myApp">
     <h1>soundboard</h1>
+    <img src="/images/soundboard.jpg" width="200" height="75">
     <div ng-controller="indexController">
       <a href="/routers">profile</a>
       <p>Do you want to learn how to play guitar but you're afraid to start?</p>
-      <strong>Let's learn together!</strong>
+      <p>Let's learn together!</p>
       <p>What's your favorite song?</p>
       <input ng-model="search" type="search" name="songSearch" placeholder="song title">
-      <button type="button" ng-click="songSearch();" name="search">search</button>
+      <button class="btn btn-success" type="button" ng-click="songSearch();" name="search">search</button>
     <div ng-repeat="vid in searchResults track by $index">
     <iframe style="display:block" width="440" height="260" ng-src="{{ vid.id.videoId | youtubeEmbedUrl }}" frameborder="0" allowfullscreen></iframe>
-    <button type="button" name="button" ng-click="saveSrc($index);">save</button>
+    <button class="btn btn-success" type="button" name="button" ng-click="saveSrc($index);">save</button>
     </div>
     </div>
   </body>

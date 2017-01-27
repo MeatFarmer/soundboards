@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/getVid', function(req, res){
-  console.log('inside getVid');
+  console.log('inside getVid', req.body);
   video.find({}, function (err, video){
     if (err) next(err);
     else {
