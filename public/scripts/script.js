@@ -83,16 +83,17 @@ $scope.display = function(){
 }; //end GET
 
 $scope.deleteSrc = function(indexIn) {
+//
+// $http({
+//   method: "DELETE",
+//   url: '/routers/' + $scope.favorites[ indexIn ]._id,
+// }).then(function (response){
+//   console.log('Post response', response);
+//   $scope.display();
+//
+// });
 
-$http({
-  method: "DELETE",
-  url: '/routers/' + $scope.favorites[ indexIn ]._id,
-}).then(function (response){
-  console.log('Post response', response);
-
-  $scope.display();
-
-});
+// $scope.display();
 
 swal({
 title: "Are you sure?",
@@ -105,7 +106,18 @@ closeOnConfirm: false
 },
 function(){
 swal("Deleted!", "Your song has been deleted.", "success");
+$http({
+  method: "DELETE",
+  url: '/routers/' + $scope.favorites[ indexIn ]._id,
+}).then(function (response){
+  console.log('Post response', response);
+  $scope.display();
+
 });
 
-};
+});
+
+
+
+}; //end deleteSrc
 }]); //end profileController
