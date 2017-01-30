@@ -27,6 +27,7 @@
     "mongoose": "^4.7.7",
     "ng-youtube-embed": "^0.4.3",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "sweetalert": "^1.1.3"
   }
 }

@@ -5,8 +5,10 @@
     <link rel="stylesheet" href="styles/style.css"/>
     <script src="../vendors/angular.min.js" charset="utf-8"></script>
     <script src="../vendors/angular-route.min.js" charset="utf-8"></script>
+    <script src="../vendors/sweetalert.min.js" charset="utf-8"></script>
     <script src="../scripts/script.js" charset="utf-8"></script>
     <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/sweetalert.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Hammersmith+One" />
   </head>
   <body ng-app="myApp">
@@ -16,7 +18,7 @@
       <div ng-init="display()">
       <div ng-repeat='vid in favorites'>
         <iframe style="display:block" width="440" height="260" ng-src="{{ vid.vidId | youtubeEmbedUrl }}" frameborder="0" allowfullscreen></iframe>
-        <button type="button" name="button" ng-click='deleteSrc($index);'>delete</button>
+        <button type="button" name="button" class="btn btn-danger" ng-click="deleteSrc($index);">delete</button>
         </div>
     </div>
   </div>

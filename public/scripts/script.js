@@ -52,13 +52,12 @@ $scope.songSearch = function(){
       console.log($scope.searchResults);
 
     });
-  )};
   }; // end `songSearch`
 
   $scope.saveSrc = function(indexIn) {
     var vidId = { id: $scope.searchResults[ indexIn ].id.videoId };
     console.log('This is the VideoID', vidId);
-
+    swal("Song Saved!", "You clicked the button!", "success");
   $http({
       method: "POST",
       url: '/',
@@ -67,7 +66,7 @@ $scope.songSearch = function(){
       console.log('Post response', response);
     });
   }; // end saveSrc
-}]); // end searchController
+}]); // end indexController
 
 myApp.controller('profileController',['$scope', '$http', function($scope, $http){
 console.log('in indexController');
@@ -90,8 +89,23 @@ $http({
   url: '/routers/' + $scope.favorites[ indexIn ]._id,
 }).then(function (response){
   console.log('Post response', response);
-  $scope.display();
-});
-};
 
+  $scope.display();
+
+});
+
+swal({
+title: "Are you sure?",
+text: "Your will not be able to recover this song!",
+type: "warning",
+showCancelButton: true,
+confirmButtonClass: "btn-danger",
+confirmButtonText: "Yes, delete it!",
+closeOnConfirm: false
+},
+function(){
+swal("Deleted!", "Your song has been deleted.", "success");
+});
+
+};
 }]); //end profileController
