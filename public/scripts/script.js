@@ -83,18 +83,7 @@ $scope.display = function(){
 }; //end GET
 
 $scope.deleteSrc = function(indexIn) {
-//
-// $http({
-//   method: "DELETE",
-//   url: '/routers/' + $scope.favorites[ indexIn ]._id,
-// }).then(function (response){
-//   console.log('Post response', response);
-//   $scope.display();
-//
-// });
-
-// $scope.display();
-
+  
 swal({
 title: "Are you sure?",
 text: "Your will not be able to recover this song!",

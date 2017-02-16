@@ -16,7 +16,7 @@
     <div ng-controller="profileController">
       <a href="/">home</a>
       <div ng-init="display()">
-      <div ng-repeat='vid in favorites'>
+      <div ng-repeat="vid in favorites">
         <iframe style="display:block" width="440" height="260" ng-src="{{ vid.vidId | youtubeEmbedUrl }}" frameborder="0" allowfullscreen></iframe>
         <button type="button" name="button" class="btn btn-danger" ng-click="deleteSrc($index);">delete</button>
         </div>
