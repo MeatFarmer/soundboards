@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MeatFarmer/SoundBoard.git"
+    "url": "git+https://github.com/josephbarsness/SoundBoard.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MeatFarmer/SoundBoard/issues"
+    "url": "https://github.com/josephbarsness/SoundBoard/issues"
   },
-  "homepage": "https://github.com/MeatFarmer/SoundBoard#readme",
+  "homepage": "https://github.com/josephbarsness/SoundBoard#readme",
   "dependencies": {
     "angular-route": "^1.6.1",
     "angular-youtube-embed": "^1.3.1",
